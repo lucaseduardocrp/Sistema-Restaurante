@@ -13,7 +13,7 @@ export const Box = styled.div`
     min-width: 34rem;
     height: 40rem;
     border: none;
-    filter: grayscale(100);
+    filter: grayscale(100%) contrast(50%);
   }
 `;
 
