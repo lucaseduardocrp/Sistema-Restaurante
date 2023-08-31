@@ -23,4 +23,18 @@ export const Grid = styled.div`
   place-items: center;
   gap: 2rem;
   margin-top: 7rem;
+
+  @media (max-width: 64rem) {
+    grid-template-columns: repeat(4, 1fr);
+
+    img {
+      width: 14rem;
+      height: 14rem;
+      object-fit: cover;
+    }
+  }
+
+  @media (max-width: 40.125rem) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;

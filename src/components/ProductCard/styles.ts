@@ -10,6 +10,10 @@ export const Container = styled.div`
     width: 51.8rem;
     height: 45.8rem;
   }
+
+  @media (max-width: 48rem) {
+    flex-wrap: wrap;
+  }
 `;
 export const DescriptionContainer = styled.div`
   ${Flex};
