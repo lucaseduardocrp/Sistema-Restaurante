@@ -8,6 +8,7 @@ export const Text = styled.div`
 
   h2 {
     margin-bottom: 3.2rem;
+    text-align: start;
   }
 
   p {

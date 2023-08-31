@@ -5,4 +5,5 @@ export const Container = styled.h2`
   font-family: ${({ theme }) => theme.FONTS.RAMPART_ONE};
   color: ${({ theme }) => theme.COLORS.PRIMARY};
   text-align: center;
+  text-transform: uppercase;
 `;

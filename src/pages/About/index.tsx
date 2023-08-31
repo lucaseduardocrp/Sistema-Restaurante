@@ -28,7 +28,7 @@ export const About = () => {
         </Box>
         <Box>
           <Text>
-            <Title>Quem somos</Title>
+            <Title>Historia</Title>
             <p>
               Nossa jornada teve início em março de 1995, quando Alex S. Miller, Danielle R. Johnson, Lucas M. Thompson
               e Sofia K. Adams, quatro empreendedores de Houston (Texas, EUA), decidiram estabelecer um novo conceito de
