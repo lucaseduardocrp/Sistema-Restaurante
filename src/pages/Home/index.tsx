@@ -3,9 +3,10 @@ import { FilterMenu } from '../../components/FilterMenu';
 import { Title } from '../../components/Title';
 import { promotionsImages } from '../../modules/promotions-images';
 import { sliderImages } from '../../modules/slider-images';
-import { Container, SliderContainer, Mask, PromotionsContainer } from './styles';
+import { Container, SliderContainer, Mask, PromotionsContainer, MenuContainer, SocialContainer, Grid } from './styles';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { socialImages } from '../../modules/social-images';
 
 export const Home = () => {
   const [slidePerView, setSlidePerView] = useState(3);
@@ -43,7 +44,7 @@ export const Home = () => {
       </SliderContainer>
       <Mask></Mask>
 
-      <section>
+      <MenuContainer>
         <Title>Explore o seu #MOMENTBRAVUS</Title>
         <FilterMenu />
 
@@ -56,7 +57,19 @@ export const Home = () => {
             ))}
           </Swiper>
         </PromotionsContainer>
-      </section>
+      </MenuContainer>
+
+      <SocialContainer>
+        <h2>
+          Bom mesmo é curtir um <b>#MOMENTBRAVUS</b> com quem a gente gosta. <b>Poste usando nossa hashtag.</b>
+        </h2>
+
+        <Grid>
+          {socialImages.map((item) => (
+            <img src={item.image} alt="Posts on instagram" key={item.id} />
+          ))}
+        </Grid>
+      </SocialContainer>
     </Container>
   );
 };
