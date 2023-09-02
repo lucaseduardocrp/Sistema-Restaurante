@@ -13,9 +13,9 @@ export const Home = () => {
 
   useEffect(() => {
     function handleResize() {
-      if (window.innerWidth < 1440 && window.innerWidth > 986) {
+      if (window.innerWidth < 1440 && window.innerWidth > 768) {
         setSlidePerView(2);
-      } else if (window.innerWidth < 986) {
+      } else if (window.innerWidth < 768) {
         setSlidePerView(1);
       } else {
         setSlidePerView(3);
@@ -51,7 +51,7 @@ export const Home = () => {
         <PromotionsContainer>
           <Swiper slidesPerView={slidePerView}>
             {promotionsImages.map((item) => (
-              <SwiperSlide>
+              <SwiperSlide className="slide">
                 <img src={item.image} alt="Promotion banner" className="promotions-slide" />
               </SwiperSlide>
             ))}
