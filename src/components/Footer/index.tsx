@@ -57,8 +57,8 @@ export const Footer = () => {
       </Container>
       <MaskContainer>
         <p>
-          Copyright © 2023 Outback Steakhouse Todos os direitos reservados. Todas as marcas registradas são propriedade
-          dos seus respectivos donos
+          Copyright © 2023 Lucas Eduardo & Alexandre Retamero Todos os direitos reservados. Todas as marcas registradas
+          são propriedade dos seus respectivos donos
         </p>
       </MaskContainer>
     </>
