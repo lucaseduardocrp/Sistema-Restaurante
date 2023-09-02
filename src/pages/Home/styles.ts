@@ -27,9 +27,23 @@ export const MenuContainer = styled.section`
 export const PromotionsContainer = styled.div`
   margin-top: 7rem;
 
+  .slide {
+    margin-right: 4rem;
+  }
+
   img {
     width: 46rem;
+    height: 34.4rem;
     object-fit: cover;
+  }
+
+  @media (max-width: 26.6rem) {
+    .slide {
+      img {
+        width: 34rem;
+        height: 24.4rem;
+      }
+    }
   }
 `;
 
