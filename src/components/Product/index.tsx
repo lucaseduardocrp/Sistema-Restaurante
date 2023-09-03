@@ -16,7 +16,6 @@ export const Product = ({ products }: Props) => {
             <img src={`${BASE_URL}/files/${product.banner}`} alt={product.name} />
             <h4>{product.name}</h4>
             <span>
-              R${' '}
               {product.price.toLocaleString('pt-BR', {
                 style: 'currency',
                 currency: 'BRL'
