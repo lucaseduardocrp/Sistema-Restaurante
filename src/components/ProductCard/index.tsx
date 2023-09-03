@@ -32,7 +32,7 @@ export const ProductCard = () => {
         <Container>
           <img src={`${BASE_URL}/files/${data.banner}`} alt={data.name} />
           <DescriptionContainer>
-            <Title>Vinking Burger</Title>
+            <Title>{data.name}</Title>
             <p>{data.description}</p>
 
             <Igredient>
