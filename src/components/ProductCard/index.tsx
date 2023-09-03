@@ -1,46 +1,44 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Container, Igredient, DescriptionContainer } from './styles';
 
-import { ProductTypes } from '../../types/products';
 import { useParams } from 'react-router-dom';
 import { Title } from '../Title';
+import { DataProduct } from '../../types/data-product';
+import { useFetch } from '../../hooks/useFetch';
+import { GET_PRODUCT } from '../../services/productMenager/getProduct';
+import { BASE_URL } from '../../services/api';
 
 export const ProductCard = () => {
-  const [data, setData] = useState<ProductTypes>();
   const { id } = useParams();
+  const [data, setData] = useState<DataProduct>();
+  const { request } = useFetch();
+
+  const getProduct = useCallback(async () => {
+    if (!id) return;
+
+    const { url, options } = GET_PRODUCT(id);
+    const json = await request(url, options);
+
+    if (json) setData(json);
+  }, [id, request]);
 
   useEffect(() => {
-    async function getData() {
-      fetch(`https://fakestoreapi.com/products/${id}`)
-        .then((response) => response.json())
-        .then((data: ProductTypes) => {
-          const products = data;
-
-          setData(products);
-        });
-    }
-
-    getData();
-  }, [id]);
+    getProduct();
+  }, [getProduct]);
 
   return (
     <>
       {data && (
         <Container>
-          <img src={data.image} alt={data.name} />
+          <img src={`${BASE_URL}/files/${data.banner}`} alt={data.name} />
           <DescriptionContainer>
             <Title>Vinking Burger</Title>
             <p>{data.description}</p>
 
             <Igredient>
-              <img
-                src="https://cdn.outback.com.br/wp-data/wp-content/uploads/2018/10/SELO-Lactose_vermelho.png"
-                alt="ingredient"
-              />
-              <img
-                src="https://cdn.outback.com.br/wp-data/wp-content/uploads/2018/10/SELO-Lactose_vermelho.png"
-                alt="ingredient"
-              />
+              {data.observations?.map((item) => (
+                <img src={`${BASE_URL}/files/${item.banner}`} alt={item.name} key={item.id} />
+              ))}
             </Igredient>
           </DescriptionContainer>
         </Container>

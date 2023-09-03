@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { FilterMenu } from '../../components/FilterMenu';
 import { Title } from '../../components/Title';
 import { promotionsImages } from '../../modules/promotions-images';
@@ -7,9 +7,47 @@ import { Container, SliderContainer, Mask, PromotionsContainer, MenuContainer, S
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { socialImages } from '../../modules/social-images';
+import { DataCategory } from '../../types/data-category';
+import { DataProduct } from '../../types/data-product';
+import { useFetch } from '../../hooks/useFetch';
+import { GET_PRODUCTS_BY_CATEGORY_ID } from '../../services/productMenager/getCategoryWithProducts';
+import { GET_CATEGORIES } from '../../services/productMenager/getAllCategories';
 
 export const Home = () => {
   const [slidePerView, setSlidePerView] = useState(3);
+
+  const [categories, setCategories] = useState<DataCategory[]>([]);
+  const [, setProducts] = useState<DataProduct[]>([]);
+
+  const { request: requestGetCategories } = useFetch();
+
+  const { request: requestGetProducts } = useFetch();
+
+  const getProducts = useCallback(
+    async (categoryId: string) => {
+      const { url, options } = GET_PRODUCTS_BY_CATEGORY_ID(categoryId);
+      const json = await requestGetProducts(url, options);
+
+      if (json) setProducts([...json]);
+    },
+    [requestGetProducts]
+  );
+
+  const getCategories = useCallback(async () => {
+    const { url, options } = GET_CATEGORIES();
+    const json = await requestGetCategories(url, options);
+
+    if (json) {
+      setCategories([...json]);
+      const [category] = json;
+
+      if (category) await getProducts(category.id);
+    }
+  }, [requestGetCategories, getProducts]);
+
+  useEffect(() => {
+    getCategories();
+  }, [getCategories]);
 
   useEffect(() => {
     function handleResize() {
@@ -46,7 +84,7 @@ export const Home = () => {
 
       <MenuContainer>
         <Title>Explore o seu #MOMENTBRAVUS</Title>
-        <FilterMenu />
+        <FilterMenu categories={categories} setProducts={(id: string) => getProducts(id)} />
 
         <PromotionsContainer>
           <Swiper slidesPerView={slidePerView}>

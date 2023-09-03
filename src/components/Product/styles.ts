@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   img {
-    width: 16rem;
-    height: 16rem;
+    width: 22.4rem;
+    height: 22.4rem;
     object-fit: cover;
   }
 
@@ -17,5 +17,12 @@ export const Container = styled.div`
     font-size: var(--sm);
     font-weight: 500;
     color: ${({ theme }) => theme.COLORS.PRIMARY};
+  }
+
+  @media (max-width: 48rem) {
+    img {
+      width: 14rem;
+      height: 14rem;
+    }
   }
 `;

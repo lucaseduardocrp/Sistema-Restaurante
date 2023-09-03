@@ -24,9 +24,11 @@ export const Grid = styled.div`
   gap: 2rem;
   margin-top: 7rem;
 
-  @media (max-width: 64rem) {
+  @media (max-width: 90rem) {
     grid-template-columns: repeat(4, 1fr);
+  }
 
+  @media (max-width: 64rem) {
     img {
       width: 14rem;
       height: 14rem;

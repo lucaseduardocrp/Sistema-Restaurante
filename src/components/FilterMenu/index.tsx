@@ -1,19 +1,23 @@
-import { filterInfo } from '../../modules/filterInfo';
-import { Container, Filter, FilterItem, Carousel } from './styles';
+import { BASE_URL } from '../../services/api';
+import { DataCategory } from '../../types/data-category';
+import { Container, Filter, FilterItem } from './styles';
 
-export const FilterMenu = () => {
+interface Props {
+  categories: DataCategory[];
+  setProducts: (id: string) => Promise<void>;
+}
+
+export const FilterMenu = ({ categories, setProducts }: Props) => {
   return (
     <Container>
-      <Carousel>
-        <Filter>
-          {filterInfo.map((item) => (
-            <FilterItem key={item.id}>
-              <img src={item.image} alt={item.name} />
-              <h3>{item.name}</h3>
-            </FilterItem>
-          ))}
-        </Filter>
-      </Carousel>
+      <Filter>
+        {categories.map((category) => (
+          <FilterItem key={category.id} onClick={() => setProducts(category.id!)}>
+            <img src={`${BASE_URL}/files/${category.banner}`} alt={category.name} />
+            <h3>{category.name}</h3>
+          </FilterItem>
+        ))}
+      </Filter>
     </Container>
   );
 };

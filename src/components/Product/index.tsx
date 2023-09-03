@@ -1,33 +1,27 @@
 import { Link } from 'react-router-dom';
 import { Container } from './styles';
-import { useEffect, useState } from 'react';
-import { ProductTypes } from '../../types/products';
+import { DataProduct } from '../../types/data-product';
+import { BASE_URL } from '../../services/api';
 
-export const Product = () => {
-  const [data, setData] = useState<ProductTypes[]>([]);
+interface Props {
+  products: DataProduct[];
+}
 
-  useEffect(() => {
-    async function getData() {
-      fetch('https://fakestoreapi.com/products')
-        .then((response) => response.json())
-        .then((data: ProductTypes[]) => {
-          const products = data;
-
-          setData(products);
-        });
-    }
-
-    getData();
-  }, []);
-
+export const Product = ({ products }: Props) => {
   return (
     <>
-      {data.map((item) => (
-        <Container key={item.id}>
-          <Link to={`${item.id}`}>
-            <img src={item.image} alt={item.name} />
-            <h4>{item.name}</h4>
-            <span>R$ {item.price}</span>
+      {products.map((product) => (
+        <Container key={product.id}>
+          <Link to={`${product.id}`}>
+            <img src={`${BASE_URL}/files/${product.banner}`} alt={product.name} />
+            <h4>{product.name}</h4>
+            <span>
+              R${' '}
+              {product.price.toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL'
+              })}
+            </span>
           </Link>
         </Container>
       ))}

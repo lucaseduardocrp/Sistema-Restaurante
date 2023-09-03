@@ -13,6 +13,12 @@ export const Container = styled.div`
 
   @media (max-width: 48rem) {
     flex-wrap: wrap;
+    gap: 2rem;
+
+    img {
+      width: 34rem;
+      height: 34rem;
+    }
   }
 `;
 export const DescriptionContainer = styled.div`
