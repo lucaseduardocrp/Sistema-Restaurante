@@ -6,6 +6,7 @@ import { ProductDetail } from '../pages/ProductDetail';
 import { Chefs } from '../pages/Chefs';
 import { Location } from '../pages/Location';
 import Layout from '../layout';
+import { NotFound } from '../pages/NotFound';
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
         element: <Location />
       }
     ]
+  },
+  {
+    path: '*',
+    element: <NotFound />
   }
 ]);
 

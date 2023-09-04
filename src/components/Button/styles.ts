@@ -22,6 +22,8 @@ export const Container = styled.button<ButtonTypes>`
     border-radius: ${rounded === 'rounded' && '0.6rem'};
     border: none;
 
+    cursor: pointer;
+
     &:active {
       opacity: 0.8;
     }
