@@ -50,13 +50,13 @@ const GlobalStyles = createGlobalStyle`
   @media (max-width: 48rem) {
     :root{
     --xs: 1.2rem;
-    --sm: 1.4rem;
+    --sm: 1.3rem;
     --base: 1.4rem;
-    --lg: 1.6rem;
-    --xl: 1.8rem;
+    --lg: 1.5rem;
+    --xl: 1.6rem;
     --2xl: 2.2rem;
-    --3xl: 2.8rem;
-    --4xl: 3rem;
+    --3xl: 2.4rem;
+    --4xl: 2.8rem;
   }
 
     section{
