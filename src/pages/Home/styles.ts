@@ -28,7 +28,7 @@ export const PromotionsContainer = styled.div`
   margin-top: 7rem;
 
   .slide {
-    margin-right: 4rem;
+    ${Flex};
   }
 
   img {

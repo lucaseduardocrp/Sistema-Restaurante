@@ -13,6 +13,8 @@ import { useFetch } from '../../hooks/useFetch';
 import { GET_PRODUCTS_BY_CATEGORY_ID } from '../../services/productMenager/getCategoryWithProducts';
 import { GET_CATEGORIES } from '../../services/productMenager/getAllCategories';
 
+import { Pagination } from 'swiper/modules';
+
 export const Home = () => {
   const [slidePerView, setSlidePerView] = useState(3);
 
@@ -87,9 +89,9 @@ export const Home = () => {
         <FilterMenu categories={categories} setProducts={(id: string) => getProducts(id)} />
 
         <PromotionsContainer>
-          <Swiper slidesPerView={slidePerView}>
+          <Swiper modules={[Pagination]} slidesPerView={slidePerView} className="slide" pagination={true}>
             {promotionsImages.map((item) => (
-              <SwiperSlide className="slide">
+              <SwiperSlide>
                 <img src={item.image} alt="Promotion banner" className="promotions-slide" />
               </SwiperSlide>
             ))}
